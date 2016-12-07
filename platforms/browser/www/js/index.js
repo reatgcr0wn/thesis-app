@@ -28,6 +28,8 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
+
+        var app = angular.module('thesis-app', ['onsen']);
     },
 
     // Update DOM on a Received Event
