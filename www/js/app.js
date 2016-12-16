@@ -7,7 +7,7 @@
 
         $scope.changeSwitch = function() {
             $scope.beacon = !$scope.beacon;
-            if ($scope.beacon) {
+            if ($scope.beacon) { //on
 
                 var uuid = '00000000-0000-0000-0000-000000000000';
                 var identifier = 'advertisedBeacon';
@@ -38,6 +38,7 @@
                 cordova.plugins.locationManager.isAdvertisingAvailable()
                     .then(function(isSupported) {
                         if (isSupported) {
+                            console.log("Start advertising...");
                             cordova.plugins.locationManager.startAdvertising(beaconRegion)
                                 .fail(conole.error)
                                 .done();
@@ -49,7 +50,7 @@
                         console.error(e);
                     })
                     .done();
-            } else {
+            } else { //off
                 // alert('unchecked');
                 cordova.plugins.locationManager.stopAdvertising()
                     .fail(function(e) {
