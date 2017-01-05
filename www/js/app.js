@@ -60,5 +60,10 @@
                 console.log($scope.beacon);
             }
         };
+
+        //性別
+        $scope.changeGender = function() {
+          
+        }
     });
 })();
