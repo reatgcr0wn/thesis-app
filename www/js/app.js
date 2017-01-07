@@ -8,8 +8,28 @@
         $scope.changeSwitch = function() {
             var identifier = 'advertisedBeacon';
             var uuid,major,minor;
+            // alert($scope.beacon.on);
 
-            if ($scope.beacon.on) {
+            var flag = $scope.beacon.on
+
+            if (cordova) {
+              if (cordova.platformId == 'android') {
+                // Androidの処理
+              } else if (cordova.platformId == 'ios') {
+                flag = !flag;
+              } else if (cordova.windowsId == 'windows') {
+                // Windowsの処理
+              }else if (cordova.platformId == 'browser') {
+
+              }
+            } else {
+              // Cordova以外での処理
+              // 例:MonacaのプレビューやChromeAppなど
+            }
+
+
+            if (flag) {
+
               uuid = $scope.generateUUID();
               major = $scope.generateMajor();
               minor = $scope.generateMinor();

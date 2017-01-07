@@ -12,32 +12,39 @@
     <script src="js/app.js"></script>
 </head>
 
-<body ng-controller="AppController">
+<body >
 
     <!-- ページのコンテンツ -->
 
-    <ons-page>
+    <ons-page ng-controller="AppController">
         <ons-toolbar>
-            <div class="center">Switches</div>
+            <div class="center">Beacon</div>
         </ons-toolbar>
 
-        <ons-list ng-init="beacon = true;">
+        <ons-list ng-init="beacon.on = false;">
             <ons-list-header>Settings</ons-list-header>
             <ons-list-item>
                 <div class="center">
-                    iBeacon on: {{beacon}}
+                    iBeacon on :{{beacon.on}}
                 </div>
                 <div class="right">
-                    <ons-switch ng-model="beacon" ng-click="changeSwitch()"></ons-switch>
+                    <ons-switch ng-model="beacon.on" ng-click="changeSwitch()"></ons-switch>
                 </div>
             </ons-list-item>
         </ons-list>
 
-        <ons-list>
-            <ons-list-header>Gender</ons-list-header>
-            <ons-list-item tappable>
+        <br />
+
+        <ons-list ng-controller="genderController" ng-init="beacon.gender = 0;" modifier="inset">
+            <ons-list-header style="height:60px;">
+              Gender on :{{beacon.genderOn}}
+              <div style="float: right;padding-right: 10px;">
+                <ons-switch ng-model="beacon.genderOn" ng-disabled="beacon.on"></ons-switch>
+              </div>
+            </ons-list-header>
+            <ons-list-item tappable ng-disabled="beacon.on">
               <label class="left">
-                <ons-input name="gender" type="radio" input-id="radio-1" value="male" ng-change='changeGender()'></ons-input>
+                <ons-input name="rdoGender" type="radio" input-id="radio-1" ng-value="1"  ng-model="beacon.gender" ng-disabled="isGenderAndBeaconOn()"></ons-input>
               </label>
               <label for="radio-1" class="center">
                 Male
@@ -45,253 +52,56 @@
             </ons-list-item>
             <ons-list-item tappable>
               <label class="left">
-                <ons-input name="gender" type="radio" input-id="radio-2" value="female" ng-change='changeGender()'></ons-input>
+                <ons-input name="rdoGender" type="radio" input-id="radio-2" ng-value="2"  ng-model="beacon.gender" ng-disabled="isGenderAndBeaconOn()"></ons-input>
               </label>
               <label for="radio-2" class="center">
-                female
+                Female
+              </label>
+            </ons-list-item>
+            <ons-list-item tappable>
+              <label class="left">
+                <ons-input name="rdoGender" type="radio" input-id="radio-3" ng-value="3"  ng-model="beacon.gender" ng-disabled="isGenderAndBeaconOn()"></ons-input>
+              </label>
+              <label for="radio-3" class="center">
+                Other
               </label>
             </ons-list-item>
         </ons-list>
 
-        <ons-list>
-            <ons-list-header>Generation</ons-list-header>
-            <ons-list-item tappable>
-              <label class="left">
-                <ons-input name="generation" type="radio" input-id="generation-0" value="0" ng-change='changeGeneration()'></ons-input>
-              </label>
-              <label for="generation-0" class="center">
-                10歳未満
-              </label>
-            </ons-list-item>
-            <ons-list-item tappable>
-              <label class="left">
-                <ons-input name="generation" type="radio" input-id="generation-1" value="1" ng-change='changeGeneration()'></ons-input>
-              </label>
-              <label for="generation-1" class="center">
-                10代
-              </label>
-            </ons-list-item>
-            <ons-list-item tappable>
-              <label class="left">
-                <ons-input name="generation" type="radio" input-id="generation-2" value="2" ng-change='changeGeneration()'></ons-input>
-              </label>
-              <label for="generation-2" class="center">
-                20代
-              </label>
-            </ons-list-item>
-            <ons-list-item tappable>
-              <label class="left">
-                <ons-input name="generation" type="radio" input-id="generation-3" value="3" ng-change='changeGeneration()'></ons-input>
-              </label>
-              <label for="generation-3" class="center">
-                30代
-              </label>
-            </ons-list-item>
-            <ons-list-item tappable>
-              <label class="left">
-                <ons-input name="generation" type="radio" input-id="generation-4" value="4" ng-change='changeGeneration()'></ons-input>
-              </label>
-              <label for="generation-4" class="center">
-                40代
-              </label>
-            </ons-list-item>
-            <ons-list-item tappable>
-              <label class="left">
-                <ons-input name="generation" type="radio" input-id="generation-5" value="5" ng-change='changeGeneration()'></ons-input>
-              </label>
-              <label for="generation-5" class="center">
-                50代
-              </label>
-            </ons-list-item>
-            <ons-list-item tappable>
-              <label class="left">
-                <ons-input name="generation" type="radio" input-id="generation-6" value="6" ng-change='changeGeneration()'></ons-input>
-              </label>
-              <label for="generation-6" class="center">
-                60代
-              </label>
-            </ons-list-item>
-            <ons-list-item tappable>
-              <label class="left">
-                <ons-input name="generation" type="radio" input-id="generation-7" value="7" ng-change='changeGeneration()'></ons-input>
-              </label>
-              <label for="generation-7" class="center">
-                70歳以上
-              </label>
-            </ons-list-item>
+        <br />
+
+        <ons-list ng-controller="ageController" modifier="inset">
+          <ons-list-header style="height:60px;">
+            Generation on : {{beacon.generationOn}}
+            <div style="float: right;padding-right: 10px;">
+              <ons-switch ng-model="beacon.ageOn" ng-disabled="beacon.on"></ons-switch>
+            </div>
+          </ons-list-header>
+          <ons-list-item tappable>
+            <ons-input type="number" placeholder="age" float ng-model="beacon.age" ng-disabled="isGenerationAndBeaconOn()"></ons-input>
+          </ons-list-item>
         </ons-list>
 
-        <ons-list>
-          <ons-list-header>Hobbies</ons-list-header>
-          <ons-list-item tappable>
+        <br />
+
+        <ons-list ng-controller="hobbyController" modifier="inset">
+          <ons-list-header style="height:60px;">
+            Hobbies on : {{beacon.hobbiesOn}}
+            <div style="float: right;padding-right: 10px;">
+              <ons-switch ng-model="beacon.hobbiesOn" ng-disabled="beacon.on"></ons-switch>
+            </div>
+          </ons-list-header>
+          <ons-list-item tappable ng-repeat="hobby in beacon.hobbies">
             <label class="left">
-              <ons-input type="checkbox" input-id="hobby-1" ng-model="page.apples"></ons-input>
+              <ons-input type="checkbox" input-id="hobby{{hobby.id}}" ng-model="hobby.checked" ng-change='check()' ng-disabled="isHobbiesAndBeaconOn()"></ons-input>
             </label>
-            <label for="hobby-1" class="center">
-              パソコン・インターネット
-            </label>
-          </ons-list-item>
-          <ons-list-item tappable>
-            <label class="left">
-              <ons-input type="checkbox" input-id="hobby-2" ng-model="page.bananas"></ons-input>
-            </label>
-            <label for="hobby-2" class="center">
-              旅行観光
-            </label>
-          </ons-list-item>
-          <ons-list-item tappable>
-            <label class="left">
-              <ons-input type="checkbox" input-id="hobby-3" ng-model="page.bananas"></ons-input>
-            </label>
-            <label for="hobby-3" class="center">
-              盆栽・ガーデニング・家庭菜園など
-            </label>
-          </ons-list-item>
-          <ons-list-item tappable>
-            <label class="left">
-              <ons-input type="checkbox" input-id="hobby-4" ng-model="page.bananas"></ons-input>
-            </label>
-            <label for="hobby-4" class="center">
-              映画鑑賞・DVD鑑賞
-            </label>
-          </ons-list-item>
-          <ons-list-item tappable>
-            <label class="left">
-              <ons-input type="checkbox" input-id="hobby-5" ng-model="page.bananas"></ons-input>
-            </label>
-            <label for="hobby-5" class="center">
-              旅行観光
-            </label>
-          </ons-list-item>
-          <ons-list-item tappable>
-            <label class="left">
-              <ons-input type="checkbox" input-id="hobby-6" ng-model="page.bananas"></ons-input>
-            </label>
-            <label for="hobby-6" class="center">
-              ジョギング・ウォーキング
-            </label>
-          </ons-list-item>
-          <ons-list-item tappable>
-            <label class="left">
-              <ons-input type="checkbox" input-id="hobby-7" ng-model="page.bananas"></ons-input>
-            </label>
-            <label for="hobby-7" class="center">
-              写真撮影・映像撮影
-            </label>
-          </ons-list-item>
-          <ons-list-item tappable>
-            <label class="left">
-              <ons-input type="checkbox" input-id="hobby-8" ng-model="page.bananas"></ons-input>
-            </label>
-            <label for="hobby-8" class="center">
-              宝くじ・懸賞など
-            </label>
-          </ons-list-item>
-          <ons-list-item tappable>
-            <label class="left">
-              <ons-input type="checkbox" input-id="hobby-9" ng-model="page.bananas"></ons-input>
-            </label>
-            <label for="hobby-9" class="center">
-              ドライブ
-            </label>
-          </ons-list-item>
-          <ons-list-item tappable>
-            <label class="left">
-              <ons-input type="checkbox" input-id="hobby-10" ng-model="page.bananas"></ons-input>
-            </label>
-            <label for="hobby-10" class="center">
-              ゲーム
-            </label>
-          </ons-list-item>
-          <ons-list-item tappable>
-            <label class="left">
-              <ons-input type="checkbox" input-id="hobby-11" ng-model="page.bananas"></ons-input>
-            </label>
-            <label for="hobby-11" class="center">
-              スポーツ観戦
-            </label>
-          </ons-list-item>
-          <ons-list-item tappable>
-            <label class="left">
-              <ons-input type="checkbox" input-id="hobby-12" ng-model="page.bananas"></ons-input>
-            </label>
-            <label for="hobby-12" class="center">
-              釣り
-            </label>
-          </ons-list-item>
-          <ons-list-item tappable>
-            <label class="left">
-              <ons-input type="checkbox" input-id="hobby-13" ng-model="page.bananas"></ons-input>
-            </label>
-            <label for="hobby-13" class="center">
-              編み物・手芸など
-            </label>
-          </ons-list-item>
-          <ons-list-item tappable>
-            <label class="left">
-              <ons-input type="checkbox" input-id="hobby-14" ng-model="page.bananas"></ons-input>
-            </label>
-            <label for="hobby-14" class="center">
-              登山トレッキングなど
-            </label>
-          </ons-list-item>
-          <ons-list-item tappable>
-            <label class="left">
-              <ons-input type="checkbox" input-id="hobby-15" ng-model="page.bananas"></ons-input>
-            </label>
-            <label for="hobby-15" class="center">
-              料理
-            </label>
-          </ons-list-item>
-          <ons-list-item tappable>
-            <label class="left">
-              <ons-input type="checkbox" input-id="hobby-16" ng-model="page.bananas"></ons-input>
-            </label>
-            <label for="hobby-16" class="center">
-              楽器演奏・バンドなど
-            </label>
-          </ons-list-item>
-          <ons-list-item tappable>
-            <label class="left">
-              <ons-input type="checkbox" input-id="hobby-17" ng-model="page.bananas"></ons-input>
-            </label>
-            <label for="hobby-17" class="center">
-              資格取得の学習
-            </label>
-          </ons-list-item>
-          <ons-list-item tappable>
-            <label class="left">
-              <ons-input type="checkbox" input-id="hobby-18" ng-model="page.bananas"></ons-input>
-            </label>
-            <label for="hobby-18" class="center">
-              絵画・陶芸・工芸など
-            </label>
-          </ons-list-item>
-          <ons-list-item tappable>
-            <label class="left">
-              <ons-input type="checkbox" input-id="hobby-19" ng-model="page.bananas"></ons-input>
-            </label>
-            <label for="hobby-19" class="center">
-              囲碁・将棋・麻雀など
-            </label>
-          </ons-list-item>
-          <ons-list-item tappable>
-            <label class="left">
-              <ons-input type="checkbox" input-id="hobby-20" ng-model="page.bananas"></ons-input>
-            </label>
-            <label for="hobby-20" class="center">
-              カラオケ
-            </label>
-          </ons-list-item>
-          <ons-list-item tappable>
-            <label class="left">
-              <ons-input type="checkbox" input-id="hobby-21" ng-model="page.bananas"></ons-input>
-            </label>
-            <label for="hobby-21" class="center">
-              その他
+            <label for="hobby{{hobby.id}}" class="center">
+              {{hobby.name}}
             </label>
           </ons-list-item>
         </ons-list>
+
+
     </ons-page>
 </body>
 

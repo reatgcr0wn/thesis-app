@@ -86,7 +86,7 @@
 		</data>
 		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		gm7iN6hQm9QzdgRwIZnMsniRERs=
+		faDpxq+rzWnjJvvtuDZNbku0JJU=
 		</data>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -94,7 +94,7 @@
 		</data>
 		<key>CDVLaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
 		<data>
-		QfGCJRXoh9Swumx8E5cX9QBz+Eo=
+		pjHzqxqK+9gUyItWlxlPbF3KYOs=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -158,7 +158,7 @@
 		</data>
 		<key>MainViewController.nib</key>
 		<data>
-		tkHkUUOYp/oBEMVuhe9TZW/H1ZY=
+		pGGs2KI5yvsthrbNk4PQCu34J+E=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -478,15 +478,15 @@
 		</data>
 		<key>www/css/style.css</key>
 		<data>
-		HJSrhJhgYLSkayD5im8vrV2LwPs=
+		8UfTLITHZUBk9KiCjiUmIu6+i5Y=
 		</data>
 		<key>www/index.html</key>
 		<data>
-		cRUXqXj4pOBFE5CMhspFUAn1Y/E=
+		5YLjeE+7qZNgUPh3tRPah2ts0fU=
 		</data>
 		<key>www/js/app.js</key>
 		<data>
-		QDtDcTKSzHlp1M6PfGZERIaJVFY=
+		0/7NgoduvNY+fTzFNvYYWNl6YJg=
 		</data>
 		<key>www/plugins/com.unarin.cordova.beacon/www/Delegate.js</key>
 		<data>
@@ -763,11 +763,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			gm7iN6hQm9QzdgRwIZnMsniRERs=
+			faDpxq+rzWnjJvvtuDZNbku0JJU=
 			</data>
 			<key>hash2</key>
 			<data>
-			vZRpD2Jz2x+kX4Za8lWwm9BwmorhPeGEJ4QHN7kreKU=
+			bZbQrOI40m9gzY7uHOYfPSLvhLwTw8v6jJPT6aVbSk8=
 			</data>
 		</dict>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
@@ -785,11 +785,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			QfGCJRXoh9Swumx8E5cX9QBz+Eo=
+			pjHzqxqK+9gUyItWlxlPbF3KYOs=
 			</data>
 			<key>hash2</key>
 			<data>
-			mBCv7bxEjtkdhhLOuETQSCH/yGlusfdphrf5ySmN2JM=
+			i1I74Xdy1Bi4yEhDwW/1oalCyraqRhb6QZGrJ+9rqvQ=
 			</data>
 		</dict>
 		<key>LaunchImage-568h@2x.png</key>
@@ -950,11 +950,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			tkHkUUOYp/oBEMVuhe9TZW/H1ZY=
+			pGGs2KI5yvsthrbNk4PQCu34J+E=
 			</data>
 			<key>hash2</key>
 			<data>
-			fJT1FaJTMAfnkEvOL7V4nbdULggTzY/xFD8xfzDGQZw=
+			+pdkNtjXetNXdhR5SBEHj4Mv6NiXgRG7yZFv32nYPJo=
 			</data>
 		</dict>
 		<key>archived-expanded-entitlements.xcent</key>
@@ -1819,33 +1819,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			HJSrhJhgYLSkayD5im8vrV2LwPs=
+			8UfTLITHZUBk9KiCjiUmIu6+i5Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			LaL3qLfqMY9FosvQtFU1ubIuDvrZkHFmPd321F7a+6o=
+			HNHbBz44lRAmpkxMW5Hy4SVxrpYON06zBPqWZu7kLC8=
 			</data>
 		</dict>
 		<key>www/index.html</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			cRUXqXj4pOBFE5CMhspFUAn1Y/E=
+			5YLjeE+7qZNgUPh3tRPah2ts0fU=
 			</data>
 			<key>hash2</key>
 			<data>
-			utnz6lJan4X49nl1TjhwY958gWjLlLIxNQ3cbjsRfsc=
+			h4/ILx5StlvefTRI4SasIJT2ad8O7PGviNMNr9yO3wg=
 			</data>
 		</dict>
 		<key>www/js/app.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			QDtDcTKSzHlp1M6PfGZERIaJVFY=
+			0/7NgoduvNY+fTzFNvYYWNl6YJg=
 			</data>
 			<key>hash2</key>
 			<data>
-			m/jLgGwIlIApgPvLcjW/0YZHUXUQLxBho8d4kThELF4=
+			nXgd/NKAAP0cFo5zn4jWQD2WeGMQCQJtcRzJH3wdt94=
 			</data>
 		</dict>
 		<key>www/plugins/com.unarin.cordova.beacon/www/Delegate.js</key>
