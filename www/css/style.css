@@ -7,3 +7,11 @@ body {
     font-family: -apple-system-font !important;
 }
 
+ons-list ons-list-header[modifier=inset] {
+  height: 60px;
+}
+
+ons-list ons-list-header[modifier=inset] div.right{
+  float: right;
+  padding-right: 10px;
+}

@@ -6,8 +6,7 @@
         $scope.beacon = {};
 
         $scope.changeSwitch = function() {
-
-            console.log($scope.beacon.on);
+            console.log($scope.beacon.gender);
             if ($scope.beacon.on) {
               startAdvertise();
             } else {
@@ -20,26 +19,32 @@
 
     app.controller('genderController', function($scope) {
       //性別
-      $scope.changeGender = function() {
+      $scope.isGenderAndBeaconOn = function() {
 
-        console.log($scope.beaocn.gender);
-        console.log($scope.beacon.on);
+        if ($scope.beacon.on || !$scope.beacon.genderOn) {
+          return true;
+        }else{
+          return false;
+        }
       }
 
     });
 
     app.controller('generationController', function($scope) {
-      //性別
-      $scope.changeGeneration = function() {
+      //世代
+      $scope.isGenerationAndBeaconOn = function() {
 
-        console.log($scope.beaocn.gender);
-        console.log($scope.beacon.on);
+        if ($scope.beacon.on || !$scope.beacon.generationOn) {
+          return true;
+        }else{
+          return false;
+        }
       }
 
     });
 
-    app.controller('testController', function($scope) {
-      $scope.hobbies = [
+    app.controller('hobbyController', function($scope) {
+      $scope.beacon.hobbies = [
         {id: 1, name: 'パソコン・インターネット'},
         {id: 2, name: '旅行観光'},
         {id: 3, name: '盆栽・ガーデニング・家庭菜園など'},
@@ -62,14 +67,26 @@
         {id: 20, name: 'カラオケ'},
         {id: 21, name: 'その他'},
       ];
-      console.log($scope.hobbies);
+      console.log($scope.beacon.hobbies);
       $scope.check = function() {
         var checks = [];
-        angular.forEach($scope.hobbies, function(hobby) {
+        angular.forEach($scope.beacon.hobbies, function(hobby) {
           if (hobby.checked) checks.push(hobby.id);
         });
         console.log(checks);
       };
+
+
+      $scope.isHobbiesAndBeaconOn = function() {
+
+        if ($scope.beacon.on || !$scope.beacon.hobbiesOn) {
+          return true;
+        }else{
+          return false;
+        }
+      }
+
+
     });
 
 })();

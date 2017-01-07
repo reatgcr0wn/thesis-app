@@ -21,11 +21,11 @@
             <div class="center">Beacon</div>
         </ons-toolbar>
 
-        <ons-list ng-init="beacon.on = true;">
+        <ons-list ng-init="beacon.on = false;">
             <ons-list-header>Settings</ons-list-header>
             <ons-list-item>
                 <div class="center">
-                    iBeacon on: {{beacon.on}}
+                    iBeacon on :{{beacon.on}}
                 </div>
                 <div class="right">
                     <ons-switch ng-model="beacon.on" ng-click="changeSwitch()"></ons-switch>
@@ -33,11 +33,18 @@
             </ons-list-item>
         </ons-list>
 
-        <ons-list ng-controller="genderController" ng-init="gender=male;">
-            <ons-list-header>Gender</ons-list-header>
-            <ons-list-item tappable>
+        <br />
+
+        <ons-list ng-controller="genderController" ng-init="beacon.gender = undefined;" modifier="inset">
+            <ons-list-header style="height:60px;">
+              Gender on :{{beacon.genderOn}}
+              <div style="float: right;padding-right: 10px;">
+                <ons-switch ng-model="beacon.genderOn" ng-disabled="beacon.on"></ons-switch>
+              </div>
+            </ons-list-header>
+            <ons-list-item tappable ng-disabled="beacon.on">
               <label class="left">
-                <ons-input name="rdoGender" type="radio" input-id="radio-1" ng-value="'male'" ng-change='changeGender()' ng-model="beacon.gender" ng-disabled="beacon.on"></ons-input>
+                <ons-input name="rdoGender" type="radio" input-id="radio-1" ng-value="0"  ng-model="beacon.gender" ng-disabled="isGenderAndBeaconOn()"></ons-input>
               </label>
               <label for="radio-1" class="center">
                 Male
@@ -45,19 +52,34 @@
             </ons-list-item>
             <ons-list-item tappable>
               <label class="left">
-                <ons-input name="rdoGender" type="radio" input-id="radio-2" ng-value="'female'" ng-change='changeGender()' ng-model="beaocn.gender" ng-disabled="beacon.on"></ons-input>
+                <ons-input name="rdoGender" type="radio" input-id="radio-2" ng-value="1"  ng-model="beacon.gender" ng-disabled="isGenderAndBeaconOn()"></ons-input>
               </label>
               <label for="radio-2" class="center">
                 Female
               </label>
             </ons-list-item>
-        </ons-list>
-
-        <ons-list ng-controller="generationController">
-            <ons-list-header>Generation</ons-list-header>
             <ons-list-item tappable>
               <label class="left">
-                <ons-input name="generation" type="radio" input-id="generation-0" ng-value="0" ng-model="beaocn.generation" ng-disabled="beacon.on"></ons-input>
+                <ons-input name="rdoGender" type="radio" input-id="radio-3" ng-value="2"  ng-model="beacon.gender" ng-disabled="isGenderAndBeaconOn()"></ons-input>
+              </label>
+              <label for="radio-3" class="center">
+                Other
+              </label>
+            </ons-list-item>
+        </ons-list>
+
+        <br />
+
+        <ons-list ng-controller="generationController" modifier="inset">
+          <ons-list-header style="height:60px;">
+            Generation on : {{beacon.generationOn}}
+            <div style="float: right;padding-right: 10px;">
+              <ons-switch ng-model="beacon.generationOn" ng-disabled="beacon.on"></ons-switch>
+            </div>
+          </ons-list-header>
+            <ons-list-item tappable>
+              <label class="left">
+                <ons-input name="generation" type="radio" input-id="generation-0" ng-value="0" ng-model="beaocn.generation" ng-disabled="isGenerationAndBeaconOn()"></ons-input>
               </label>
               <label for="generation-0" class="center">
                 10歳未満
@@ -65,7 +87,7 @@
             </ons-list-item>
             <ons-list-item tappable>
               <label class="left">
-                <ons-input name="generation" type="radio" input-id="generation-1" ng-value="1" ng-model="beaocn.generation" ng-disabled="beacon.on"></ons-input>
+                <ons-input name="generation" type="radio" input-id="generation-1" ng-value="1" ng-model="beaocn.generation" ng-disabled="isGenerationAndBeaconOn()"></ons-input>
               </label>
               <label for="generation-1" class="center">
                 10代
@@ -73,7 +95,7 @@
             </ons-list-item>
             <ons-list-item tappable>
               <label class="left">
-                <ons-input name="generation" type="radio" input-id="generation-2" ng-value="2" ng-model="beaocn.generation" ng-disabled="beacon.on"></ons-input>
+                <ons-input name="generation" type="radio" input-id="generation-2" ng-value="2" ng-model="beaocn.generation" ng-disabled="isGenerationAndBeaconOn()"></ons-input>
               </label>
               <label for="generation-2" class="center">
                 20代
@@ -81,7 +103,7 @@
             </ons-list-item>
             <ons-list-item tappable>
               <label class="left">
-                <ons-input name="generation" type="radio" input-id="generation-3" ng-value="3" ng-model="beaocn.generation" ng-disabled="beacon.on"></ons-input>
+                <ons-input name="generation" type="radio" input-id="generation-3" ng-value="3" ng-model="beaocn.generation" ng-disabled="isGenerationAndBeaconOn()"></ons-input>
               </label>
               <label for="generation-3" class="center">
                 30代
@@ -89,7 +111,7 @@
             </ons-list-item>
             <ons-list-item tappable>
               <label class="left">
-                <ons-input name="generation" type="radio" input-id="generation-4" ng-value="4" ng-model="beaocn.generation" ng-disabled="beacon.on"></ons-input>
+                <ons-input name="generation" type="radio" input-id="generation-4" ng-value="4" ng-model="beaocn.generation" ng-disabled="isGenerationAndBeaconOn()"></ons-input>
               </label>
               <label for="generation-4" class="center">
                 40代
@@ -97,7 +119,7 @@
             </ons-list-item>
             <ons-list-item tappable>
               <label class="left">
-                <ons-input name="generation" type="radio" input-id="generation-5" ng-value="5" ng-model="beaocn.generation" ng-disabled="beacon.on"></ons-input>
+                <ons-input name="generation" type="radio" input-id="generation-5" ng-value="5" ng-model="beaocn.generation" ng-disabled="isGenerationAndBeaconOn()"></ons-input>
               </label>
               <label for="generation-5" class="center">
                 50代
@@ -105,7 +127,7 @@
             </ons-list-item>
             <ons-list-item tappable>
               <label class="left">
-                <ons-input name="generation" type="radio" input-id="generation-6" ng-value="6" ng-model="beaocn.generation" ng-disabled="beacon.on"></ons-input>
+                <ons-input name="generation" type="radio" input-id="generation-6" ng-value="6" ng-model="beaocn.generation" ng-disabled="isGenerationAndBeaconOn()"></ons-input>
               </label>
               <label for="generation-6" class="center">
                 60代
@@ -113,7 +135,7 @@
             </ons-list-item>
             <ons-list-item tappable>
               <label class="left">
-                <ons-input name="generation" type="radio" input-id="generation-7" ng-value="7" ng-model="beaocn.generation" ng-disabled="beacon.on"></ons-input>
+                <ons-input name="generation" type="radio" input-id="generation-7" ng-value="7" ng-model="beaocn.generation" ng-disabled="isGenerationAndBeaconOn()"></ons-input>
               </label>
               <label for="generation-7" class="center">
                 70歳以上
@@ -121,11 +143,18 @@
             </ons-list-item>
         </ons-list>
 
-        <ons-list ng-controller="testController">
-          <ons-list-header>Hobbies</ons-list-header>
-          <ons-list-item tappable ng-repeat="hobby in hobbies">
+        <br />
+
+        <ons-list ng-controller="hobbyController" modifier="inset">
+          <ons-list-header style="height:60px;">
+            Hobbies on : {{beacon.hobbiesOn}}
+            <div style="float: right;padding-right: 10px;">
+              <ons-switch ng-model="beacon.hobbiesOn" ng-disabled="beacon.on"></ons-switch>
+            </div>
+          </ons-list-header>
+          <ons-list-item tappable ng-repeat="hobby in beacon.hobbies">
             <label class="left">
-              <ons-input type="checkbox" input-id="hobby{{hobby.id}}" ng-model="hobby.checked" ng-change='check()' ng-disabled="beacon.on"></ons-input>
+              <ons-input type="checkbox" input-id="hobby{{hobby.id}}" ng-model="hobby.checked" ng-change='check()' ng-disabled="isHobbiesAndBeaconOn()"></ons-input>
             </label>
             <label for="hobby{{hobby.id}}" class="center">
               {{hobby.name}}
