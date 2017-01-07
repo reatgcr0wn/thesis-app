@@ -6,13 +6,46 @@
         $scope.beacon = {};
 
         $scope.changeSwitch = function() {
-            console.log($scope.beacon.gender);
+            var identifier = 'advertisedBeacon';
+            var uuid,major,minor;
+
             if ($scope.beacon.on) {
-              startAdvertise();
+              uuid = $scope.generateUUID();
+              major = $scope.generateMajor();
+              minor = $scope.generateMinor();
+
+              startAdvertise(identifier,uuid,major,minor);
             } else {
               stopAdvertising();
             }
         };
+
+        $scope.generateUUID = function() {
+          return '00000000-0000-0000-0000-000000000000';
+        };
+
+        $scope.generateMajor = function() {
+          //2進数に変換
+          var gender = Number($scope.beacon.gender).toString(2);
+          if(!gender){
+            gender = 0;
+          }
+          //ゼロパディング
+          gender = ("0"+gender).slice(-2);
+          console.log(gender);
+
+          var hobby_checks = [];
+          angular.forEach($scope.beacon.hobbies, function(hobby) {
+            if (hobby.checked) hobby_checks.push(hobby.id);
+          });
+          console.log(hobby_checks);
+          return 88
+        };
+
+        $scope.generateMinor = function() {
+          return 99
+        };
+
 
     });
 
@@ -91,11 +124,8 @@
 
 })();
 
-function startAdvertise() {
-      var uuid = '00000000-0000-0000-0000-000000000000';
-      var identifier = 'advertisedBeacon';
-      var minor = 2000;
-      var major = 5;
+function startAdvertise(identifier,uuid,major,minor) {
+
       var beaconRegion = new cordova.plugins.locationManager.BeaconRegion(identifier, uuid, major, minor);
       console.log(beaconRegion);
 

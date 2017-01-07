@@ -35,7 +35,7 @@
 
         <br />
 
-        <ons-list ng-controller="genderController" ng-init="beacon.gender = undefined;" modifier="inset">
+        <ons-list ng-controller="genderController" ng-init="beacon.gender = 0;" modifier="inset">
             <ons-list-header style="height:60px;">
               Gender on :{{beacon.genderOn}}
               <div style="float: right;padding-right: 10px;">
@@ -44,7 +44,7 @@
             </ons-list-header>
             <ons-list-item tappable ng-disabled="beacon.on">
               <label class="left">
-                <ons-input name="rdoGender" type="radio" input-id="radio-1" ng-value="0"  ng-model="beacon.gender" ng-disabled="isGenderAndBeaconOn()"></ons-input>
+                <ons-input name="rdoGender" type="radio" input-id="radio-1" ng-value="1"  ng-model="beacon.gender" ng-disabled="isGenderAndBeaconOn()"></ons-input>
               </label>
               <label for="radio-1" class="center">
                 Male
@@ -52,7 +52,7 @@
             </ons-list-item>
             <ons-list-item tappable>
               <label class="left">
-                <ons-input name="rdoGender" type="radio" input-id="radio-2" ng-value="1"  ng-model="beacon.gender" ng-disabled="isGenderAndBeaconOn()"></ons-input>
+                <ons-input name="rdoGender" type="radio" input-id="radio-2" ng-value="2"  ng-model="beacon.gender" ng-disabled="isGenderAndBeaconOn()"></ons-input>
               </label>
               <label for="radio-2" class="center">
                 Female
@@ -60,7 +60,7 @@
             </ons-list-item>
             <ons-list-item tappable>
               <label class="left">
-                <ons-input name="rdoGender" type="radio" input-id="radio-3" ng-value="2"  ng-model="beacon.gender" ng-disabled="isGenderAndBeaconOn()"></ons-input>
+                <ons-input name="rdoGender" type="radio" input-id="radio-3" ng-value="3"  ng-model="beacon.gender" ng-disabled="isGenderAndBeaconOn()"></ons-input>
               </label>
               <label for="radio-3" class="center">
                 Other
