@@ -25,35 +25,74 @@
         };
 
         $scope.generateMajor = function() {
+          //gender
           //2進数に変換
           var gender = Number($scope.beacon.gender).toString(2);
           //数字以外は0
-          if(!gender){
-            gender = 0;
-          }
+          if(!gender){gender = 0;}
           //ゼロパディング
           gender = ("0"+gender).slice(-2);
-          console.log(gender);
 
-          var generation = Number($scope.beacon.generation).toString(2);
+          //age
+          var age = Number($scope.beacon.age);
           //数字以外は0
-          if(!gender){
-            gender = 0;
-          }
+          if(!age){age = 0;}
+          age = Math.max(age, 0);
+          age = Math.min(age,127);
+          age = age.toString(2);
           //ゼロパディング
-          gender = ("0"+gender).slice(-2);
-          console.log(gender);
+          age = ("000000"+age).slice(-7);
+
 
           var hobby_checks = [];
+          var hobby_prefix = '0000000'
           angular.forEach($scope.beacon.hobbies, function(hobby) {
             if (hobby.checked) hobby_checks.push(hobby.id);
           });
-          console.log(hobby_checks);
-          return 88
+
+          angular.forEach(hobby_checks, function(num, index) {
+            if (num <= 7) { //7ケタまで
+              hobby_prefix = hobby_prefix.substr(0, num-1) + '1' + hobby_prefix.substr(num-1 + 1);
+            }
+          });
+
+          //off
+          if (!$scope.beacon.genderOn) {
+            gender = '00'
+          }
+          if (!$scope.beacon.ageOn) {
+            age = '0000000'
+          }
+          if (!$scope.beacon.hobbiesOn) {
+            hobby_prefix = '0000000'
+          }
+
+          var prefix = gender + age + hobby_prefix
+          console.log('major',prefix);
+          return parseInt(prefix,2);
         };
 
         $scope.generateMinor = function() {
-          return 99
+          var hobby_checks = [];
+          var hobby_prefix = '0000000000000000'
+          angular.forEach($scope.beacon.hobbies, function(hobby) {
+            if (hobby.checked) hobby_checks.push(hobby.id);
+          });
+          angular.forEach(hobby_checks, function(num, index) {
+            if (num >= 8) { //8ケタ以上
+              hobby_prefix = hobby_prefix.substr(0, num-1-7) + '1' + hobby_prefix.substr(num-1-7 + 1);
+            }
+          });
+
+          //off
+          if (!$scope.beacon.hobbiesOn) {
+            hobby_prefix = '0000000000000000'
+          }
+
+          var prefix = hobby_prefix;
+
+          console.log('minor',prefix);
+          return parseInt(prefix,2);
         };
 
 
@@ -73,11 +112,11 @@
 
     });
 
-    app.controller('generationController', function($scope) {
+    app.controller('ageController', function($scope) {
       //世代
       $scope.isGenerationAndBeaconOn = function() {
 
-        if ($scope.beacon.on || !$scope.beacon.generationOn) {
+        if ($scope.beacon.on || !$scope.beacon.ageOn) {
           return true;
         }else{
           return false;

@@ -70,77 +70,16 @@
 
         <br />
 
-        <ons-list ng-controller="generationController" modifier="inset">
+        <ons-list ng-controller="ageController" modifier="inset">
           <ons-list-header style="height:60px;">
             Generation on : {{beacon.generationOn}}
             <div style="float: right;padding-right: 10px;">
-              <ons-switch ng-model="beacon.generationOn" ng-disabled="beacon.on"></ons-switch>
+              <ons-switch ng-model="beacon.ageOn" ng-disabled="beacon.on"></ons-switch>
             </div>
           </ons-list-header>
-            <ons-list-item tappable>
-              <label class="left">
-                <ons-input name="generation" type="radio" input-id="generation-0" ng-value="1" ng-model="beaocn.generation" ng-disabled="isGenerationAndBeaconOn()"></ons-input>
-              </label>
-              <label for="generation-0" class="center">
-                10歳未満
-              </label>
-            </ons-list-item>
-            <ons-list-item tappable>
-              <label class="left">
-                <ons-input name="generation" type="radio" input-id="generation-1" ng-value="2" ng-model="beaocn.generation" ng-disabled="isGenerationAndBeaconOn()"></ons-input>
-              </label>
-              <label for="generation-1" class="center">
-                10代
-              </label>
-            </ons-list-item>
-            <ons-list-item tappable>
-              <label class="left">
-                <ons-input name="generation" type="radio" input-id="generation-2" ng-value="2" ng-model="beaocn.generation" ng-disabled="isGenerationAndBeaconOn()"></ons-input>
-              </label>
-              <label for="generation-2" class="center">
-                20代
-              </label>
-            </ons-list-item>
-            <ons-list-item tappable>
-              <label class="left">
-                <ons-input name="generation" type="radio" input-id="generation-3" ng-value="3" ng-model="beaocn.generation" ng-disabled="isGenerationAndBeaconOn()"></ons-input>
-              </label>
-              <label for="generation-3" class="center">
-                30代
-              </label>
-            </ons-list-item>
-            <ons-list-item tappable>
-              <label class="left">
-                <ons-input name="generation" type="radio" input-id="generation-4" ng-value="4" ng-model="beaocn.generation" ng-disabled="isGenerationAndBeaconOn()"></ons-input>
-              </label>
-              <label for="generation-4" class="center">
-                40代
-              </label>
-            </ons-list-item>
-            <ons-list-item tappable>
-              <label class="left">
-                <ons-input name="generation" type="radio" input-id="generation-5" ng-value="5" ng-model="beaocn.generation" ng-disabled="isGenerationAndBeaconOn()"></ons-input>
-              </label>
-              <label for="generation-5" class="center">
-                50代
-              </label>
-            </ons-list-item>
-            <ons-list-item tappable>
-              <label class="left">
-                <ons-input name="generation" type="radio" input-id="generation-6" ng-value="6" ng-model="beaocn.generation" ng-disabled="isGenerationAndBeaconOn()"></ons-input>
-              </label>
-              <label for="generation-6" class="center">
-                60代
-              </label>
-            </ons-list-item>
-            <ons-list-item tappable>
-              <label class="left">
-                <ons-input name="generation" type="radio" input-id="generation-7" ng-value="7" ng-model="beaocn.generation" ng-disabled="isGenerationAndBeaconOn()"></ons-input>
-              </label>
-              <label for="generation-7" class="center">
-                70歳以上
-              </label>
-            </ons-list-item>
+          <ons-list-item tappable>
+            <ons-input type="number" placeholder="age" float ng-model="beacon.age" ng-disabled="isGenerationAndBeaconOn()"></ons-input>
+          </ons-list-item>
         </ons-list>
 
         <br />
