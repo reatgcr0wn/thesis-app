@@ -4,11 +4,13 @@
     var app = ons.bootstrap();
     app.controller('AppController', function($scope) {
         //スイッチチェック
-        $scope.beacon = true;
+
+        $scope.beacon = {};
 
         $scope.changeSwitch = function() {
-            $scope.beacon = !$scope.beacon;
-            if ($scope.beacon) { //on
+            // $scope.beacon = !$scope.beacon;
+            console.log($scope.beacon.on);
+            if ($scope.beacon.on) { //on
 
                 var uuid = '00000000-0000-0000-0000-000000000000';
                 var identifier = 'advertisedBeacon';
@@ -58,13 +60,23 @@
                         console.error(e);
                     })
                     .done();
-                console.log($scope.beacon);
+                console.log($scope.beacon.on);
             }
         };
 
-        //性別
-        $scope.changeGender = function() {
-
-        }
     });
+
+
+    app.controller('genderController', function($scope) {
+      //性別
+      $scope.changeGender = function() {
+
+        console.log($scope.beaocn.gender);
+        $scope.beacon.on = true;
+        console.log($scope.beacon.on);
+      }
+
+    });
+
+
 })();
